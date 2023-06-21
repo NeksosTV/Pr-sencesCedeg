@@ -1,6 +1,6 @@
 <template>
     <main class="contenair__main">
-      <p class="mb-28">
+      <p class="mb-20">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam impedit quis repellat sapiente dolorem,
         quos explicabo facere enim reprehenderit saepe alias molestias quasi? Nesciunt, commodi accusantium fuga omnis
         iusto aspernatur. Debitis dolor vel maiores. Veritatis non est ipsa laboriosam ex temporibus commodi nostrum
@@ -48,6 +48,7 @@
     background-image: url(../public/img/banner.png);
     /* background-repeat: no-repeat; */
     background-size: cover;
+    padding: 20px;
   }
   
   .center-button {
