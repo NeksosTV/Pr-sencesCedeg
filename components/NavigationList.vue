@@ -1,6 +1,7 @@
 <template>
   <div class="navigation bg-slate-400">
     <router-link to="/">Accueil</router-link>
+    <!-- <router-link to="/profil">Prendre les présences</router-link> -->
     <button v-if="$route.path !== '/login'" @click="loginOrLogout">
       {{ isLoggedIn ? 'Déconnexion' : 'Connexion' }}
     </button>
@@ -71,3 +72,4 @@ export default {
   background-color: #45a049;
 }
 </style>
+
