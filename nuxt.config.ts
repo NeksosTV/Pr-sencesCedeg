@@ -2,8 +2,8 @@
 export default ({
   devtools: { enabled: false },
   modules: [
-    "@nuxtjs/tailwindcss"
-  
+    '@nuxtjs/tailwindcss',
+    // '@nuxtjs/universal-storage'
   ],
 
   routes: [

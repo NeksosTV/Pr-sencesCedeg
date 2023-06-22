@@ -14,7 +14,8 @@ import PocketBase from 'pocketbase';
 export default {
   data() {
     return {
-      isLoggedIn: false
+      isLoggedIn: false,
+      showLoginButton: true
     };
   },
   mounted() {
@@ -27,21 +28,25 @@ export default {
    
     },
     async loginOrLogout() {
-      if (this.isLoggedIn) {
-        // Effectuer les étapes de déconnexion de l'utilisateur
-        const pb = new PocketBase('http://127.0.0.1:8090');
-        // await pb.authStore.logout();
+  if (this.isLoggedIn) {
+    // Effectuer les étapes de déconnexion de l'utilisateur
+    const pb = new PocketBase('http://127.0.0.1:8090');
+    // await pb.authStore.logout();
 
-        // Réinitialiser la valeur de isLoggedIn à false
-        this.isLoggedIn = false;
+    // Réinitialiser la valeur de isLoggedIn à false
+    this.isLoggedIn = false;
 
-        // Rediriger vers la page d'accueil ou une autre page appropriée après la déconnexion
-        this.$router.push('/');
-      } else {
-        // Rediriger vers la page de connexion
-        this.$router.push('/login');
-      }
-    }
+    // Mettre à jour la visibilité du bouton de connexion
+    this.showLoginButton = true;
+
+    // Rediriger vers la page d'accueil ou une autre page appropriée après la déconnexion
+    this.$router.push('/');
+  } else {
+    // Rediriger vers la page de connexion
+    this.$router.push('/login');
+  }
+},
+
   }
 };
 </script>

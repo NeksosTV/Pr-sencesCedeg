@@ -14,7 +14,7 @@ import Logo from '../public/img/logo.png'; // Remplacez le chemin par le chemin 
       <!-- <h2 class="text-2xl py-4">
         Site de présence de la cedeg
       </h2> -->
-      <NavigationList />
+      <NavigationList :isLoggedIn="isLoggedIn" @logout="logout" />
 
       <!-- <NuxtLink to="/login"><button class="login-link mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 rounded-full">Login</button></NuxtLink> -->
 

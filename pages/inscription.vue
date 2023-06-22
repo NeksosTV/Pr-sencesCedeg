@@ -30,8 +30,10 @@
 
       <button type="submit">S'inscrire</button>
     </form>
+    <p v-if="errorMessage" class=" error-password text-slate-950">{{ errorMessage }}</p>
 
-    <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+    <!-- <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p> -->
     <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
   </div>
 </template>
@@ -53,39 +55,51 @@ export default {
   },
   methods: {
     async submitForm() {
-      const pb = new PocketBase('http://127.0.0.1:8090');
+  const pb = new PocketBase('http://127.0.0.1:8090');
 
-      const item = {
-        username: this.username,
-        email: this.email,
-        emailVisibility: true,
-        password: this.password,
-        passwordConfirm: this.passwordConfirm,
-        name: this.name
-      };
+  // Vérification de la longueur minimale du mot de passe
+  if (this.password.length < 8) {
+    this.errorMessage = "Le mot de passe doit contenir au moins 8 caractères.";
+    return;
+  }
 
-      try {
-        const record = await pb.collection('users').create(item);
-        console.log('Données enregistrées avec succès:', record);
+  const item = {
+    username: this.username,
+    email: this.email,
+    emailVisibility: true,
+    password: this.password,
+    passwordConfirm: this.passwordConfirm,
+    name: this.name
+  };
 
-        this.successMessage = "Inscription réussie !";
+  try {
+    const record = await pb.collection('users').create(item);
+    console.log('Données enregistrées avec succès:', record);
 
-        // Réinitialiser les champs du formulaire
-        this.username = '';
-        this.email = '';
-        this.password = '';
-        this.passwordConfirm = '';
-        this.name = '';
-      } catch (error) {
-        console.error('Erreur lors de l\'enregistrement des données:', error);
-        this.errorMessage = "Une erreur s'est produite lors de l'inscription.";
-      }
-    }
+    this.successMessage = "Inscription réussie !";
+
+    // Réinitialiser les champs du formulaire
+    this.username = '';
+    this.email = '';
+    this.password = '';
+    this.passwordConfirm = '';
+    this.name = '';
+  } catch (error) {
+    console.error('Erreur lors de l\'enregistrement des données:', error);
+    this.errorMessage = "Une erreur s'est produite lors de l'inscription.";
+  }
+}
+
   }
 };
 </script>
 
 <style scoped>
+
+.error-password {
+  color: rgb(0, 0, 0);
+}
+
 .inscription-form {
   display: flex;
   flex-direction: column;
