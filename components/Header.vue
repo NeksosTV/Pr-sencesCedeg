@@ -6,23 +6,22 @@ import Logo from '../public/img/logo.png'; // Remplacez le chemin par le chemin 
 
 <template>
   <header class="bg-slate-400 text-slate-900">
-    <div class="wrapper p-6 text-center">
-      <div class="logo-container">
+    <div class="wrapper p-6 text-center flex flex-col md:flex-row md:items-center">
+      <div class="logo-container md:absolute md:top-0 md:left-0 md:p-10">
         <img class="logo" :src="Logo" alt="Logo Cedeg">
       </div>
-      <h1 class="text-4xl font-bold py-4">Cedeg</h1>
-      <!-- <h2 class="text-2xl py-4">
-        Site de présence de la cedeg
-      </h2> -->
+      <h1 class="text-4xl md:text-6xl font-bold py-4 md:pl-20 title">Cedeg</h1>
       <NavigationList :isLoggedIn="isLoggedIn" @logout="logout" />
-
-      <!-- <NuxtLink to="/login"><button class="login-link mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 rounded-full">Login</button></NuxtLink> -->
-
     </div>
   </header>
+
 </template>
 
 <style scoped>
+
+.title{
+  margin-left: 50%;
+}
 .logo-container {
   position: absolute;
   top: 0;
@@ -31,6 +30,29 @@ import Logo from '../public/img/logo.png'; // Remplacez le chemin par le chemin 
 }
 
 .logo {
-  height: 80px; /* Ajustez la hauteur du logo  (taille) */
+  height: 80px; /* Ajustez la hauteur du logo (taille) */
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo-container {
+    position: relative;
+    top: initial;
+    left: initial;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+
+  .logo {
+    height: 60px; /* Ajustez la hauteur du logo pour les écrans plus petits */
+  }
+
+  .text-4xl {
+    font-size: 3rem; /* Ajustez la taille du titre pour les écrans plus petits */
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <body class="">
+
     <main class="container__main">
       <video autoplay muted loop class="background-video">
         <source src="../public/videos/macro.mp4" type="video/mp4">
@@ -11,7 +11,7 @@
       <p v-if="attendanceLink" class="attendance-link text-gray-50">Lien de présence : <a class="custom-link" target="_blank" :href="attendanceLink">{{ attendanceLink }}</a></p>
       <p v-if="attendanceLink" class="copy-link text-gray-50">Copiez le lien et ouvrez-le dans un navigateur pour accéder au formulaire.</p>
     </main>
-  </body>
+  
 </template>
 
 <script>
@@ -82,4 +82,15 @@ export default {
 .copy-link {
   text-align: center;
 }
+
+/* @media (max-width: 768px) {
+  .background-video {
+    background-size: cover;
+    position: fixed;
+    display: flex;
+
+
+}
+
+} */
 </style>
