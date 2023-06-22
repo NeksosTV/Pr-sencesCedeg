@@ -8,7 +8,7 @@
         Ce site permet de prendre les présences pour le centre de formation de la Cedeg
       </p>
       <button class="center-button" @click="generateAttendanceLink">Prendre les présences</button>
-      <p v-if="attendanceLink" class="attendance-link text-gray-50">Lien de présence : <a target="_blank" :href="attendanceLink">{{ attendanceLink }}</a></p>
+      <p v-if="attendanceLink" class="attendance-link text-gray-50">Lien de présence : <a class="custom-link" target="_blank" :href="attendanceLink">{{ attendanceLink }}</a></p>
       <p v-if="attendanceLink" class="copy-link text-gray-50">Copiez le lien et ouvrez-le dans un navigateur pour accéder au formulaire.</p>
     </main>
   </body>
@@ -34,6 +34,10 @@ export default {
 </script>
 
 <style scoped>
+.attendance-link a.custom-link {
+  color: #000000; /* Couleur du lien générer */
+}
+
 .background-video {
   position: fixed;
   right: 0;
