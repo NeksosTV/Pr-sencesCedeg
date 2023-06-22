@@ -1,35 +1,55 @@
 <template>
-  <body class="container__main bg-slate-400 ">
-    <main >
-    <p class="mb-20 text-center">
-      se site permet de prendre les présences pour le centre de formation de la Cedeg
-    </p>
-    <button class="center-button" @click="redirectToAttendanceForm">Prendre les présences</button>
-  </main>
+  <body class="">
+    <main class="container__main">
+      <video autoplay muted loop class="background-video">
+        <source src="../public/videos/macro.mp4" type="video/mp4">
+      </video>
+      <p class="mb-20 text-center text-gray-50">
+        Ce site permet de prendre les présences pour le centre de formation de la Cedeg
+      </p>
+      <button class="center-button" @click="generateAttendanceLink">Prendre les présences</button>
+      <p v-if="attendanceLink" class="attendance-link text-gray-50">Lien de présence : <a :href="attendanceLink">{{ attendanceLink }}</a></p>
+      <p v-if="attendanceLink" class="copy-link text-gray-50">Copiez le lien et ouvrez-le dans un navigateur pour accéder au formulaire.</p>
+    </main>
   </body>
-  
 </template>
 
-<script >
+<script>
 export default {
+  data() {
+    return {
+      attendanceLink: null
+    };
+  },
   methods: {
-    redirectToAttendanceForm() {
-      // Rediriger vers la page du formulaire de prise de présences
-      this.$router.push('/attendance-form');
+    generateAttendanceLink() {
+      const link = this.generateUniqueLink();
+      this.attendanceLink = link;
+    },
+    generateUniqueLink() {
+
+
+      return `http://localhost:3000/attendance-form/`;  //lien custom qui améne au formulaire de présences
     }
   }
 };
 </script>
 
 <style scoped>
+.background-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: 68px;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+}
 
 .container__main {
-  /* background-image: url(../public/img/banner.png); */
-  background-repeat: no-repeat;
-  background-size: cover;
   padding: 20px;
-  /* background-color: #45a049; */
-  
 }
 
 .center-button {
@@ -46,5 +66,18 @@ export default {
 
 .center-button:hover {
   background-color: #45a049;
+}
+
+.attendance-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.attendance-link a {
+  color: #4caf50;
+}
+
+.copy-link {
+  text-align: center;
 }
 </style>

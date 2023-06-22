@@ -14,7 +14,7 @@
       </thead>
       <tbody>
         <tr v-for="presence in presences" :key="presence.id">
-          <td>{{ presence.collectionId }}</td>
+          <td>{{ presence.id }}</td>
           <td>{{ presence.Nom }}</td>
           <td>{{ presence.prenom }}</td>
           <td>{{ formatDisplayDate(presence.created) }}</td>
