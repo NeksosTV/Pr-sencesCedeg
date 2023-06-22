@@ -27,7 +27,7 @@ export default {
       this.attendanceLink = link;
     },
     generateUniqueLink() {
-      return `http://localhost:3000/attendance-form/`;  //lien custom qui améne au formulaire de présences
+      return `https://presence-cedeg.netlify.app/attendance-form/`;  //lien custom qui améne au formulaire de présences
     }
   }
 };
